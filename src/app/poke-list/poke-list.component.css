@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+}
+
+#card-grid {
+    margin-top: 100px;
+}
+
+mat-spinner {
+    margin: auto;
+}

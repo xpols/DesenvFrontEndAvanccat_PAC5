@@ -1,0 +1,12 @@
+#header {
+    width: 100%;
+    display: flex;
+}
+
+#title {
+    width: 80%;
+}
+
+#back {
+    width: 20%;
+}

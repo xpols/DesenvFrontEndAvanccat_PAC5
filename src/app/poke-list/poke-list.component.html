@@ -1,0 +1,42 @@
+<h1>List of pokemons</h1>
+<div *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading">
+    <div>
+        <mat-button-toggle-group name="list-view" value="list" (change)="onTypeChange($event.value)">
+            <mat-button-toggle value="list">
+                <mat-icon>list</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value="card">
+                <mat-icon>grid_on</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div id="table-grid" *ngIf="type=='list'">
+        <table mat-table [dataSource]="listPokes" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> NAME </th>
+                <td mat-cell *matCellDef="let poke"> {{poke.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="url">
+                <th mat-header-cell *matHeaderCellDef> URL </th>
+                <td mat-cell *matCellDef="let poke"> {{poke.url}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="goToDetail(row.name)"></tr>
+        </table>
+    </div>
+
+    <div id="card-grid" *ngIf="type=='card'">
+        <mat-grid-list cols="1" rowHeight="300px">
+            <ng-container>
+                <mat-grid-tile *ngFor="let item of listPokes">
+                    <poke-card [url]="item.url" (click)="goToDetail(item.name)"></poke-card>
+                </mat-grid-tile>
+            </ng-container>
+        </mat-grid-list>
+    </div>
+</div>
