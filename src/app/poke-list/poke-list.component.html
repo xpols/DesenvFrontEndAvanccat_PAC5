@@ -2,7 +2,7 @@
 <div *ngIf="loading">
     <mat-spinner></mat-spinner>
 </div>
-<div *ngIf="!loading">
+<div *ngIf="!loading" class="animate__animated animate__bounce animate__fadeIn">
     <div>
         <mat-button-toggle-group name="list-view" value="list" (change)="onTypeChange($event.value)">
             <mat-button-toggle value="list">
@@ -30,7 +30,7 @@
         </table>
     </div>
 
-    <div id="card-grid" *ngIf="type=='card'">
+    <div id="card-grid" class="animate__animated animate__bounce animate__fadeIn" *ngIf="type=='card'">
         <mat-grid-list cols="1" rowHeight="300px">
             <ng-container>
                 <mat-grid-tile *ngFor="let item of listPokes">
